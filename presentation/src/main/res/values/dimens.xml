@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="half_dp">0.5dp</dimen>
+
+    <!--Default margin-->
+    <dimen name="extra_big_margin">90dp</dimen>
+    <dimen name="big_margin">26dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="micro_margin">4dp</dimen>
+
+    <!--Default text-->
+    <dimen name="default_big_title">22sp</dimen>
+    <dimen name="default_title">18sp</dimen>
+    <dimen name="default_subtitle">16sp</dimen>
+    <dimen name="default_text">14sp</dimen>
+    <dimen name="default_small_text">12sp</dimen>
+
+    <!--Default button-->
+    <dimen name="default_text_button">14sp</dimen>
+
+    <!--Home-->
+    <dimen name="home_card_number_text">32sp</dimen>
+    <dimen name="home_card_icon_size">45dp</dimen>
+    <dimen name="home_button_size">35dp</dimen>
+
+    <!--Profile-->
+    <dimen name="profile_picture_size">100dp</dimen>
+
+    <!--Picture Provider-->
+    <dimen name="choice_provider_button_size">65dp</dimen>
+
+    <!--Benefits-->
+    <dimen name="item_benefit_card_height">310dp</dimen>
+    <dimen name="benefit_details_banner_height">180dp</dimen>
+
+    <!--Notifications-->
+    <dimen name="item_notification_min_height">80dp</dimen>
+
+    <!--Barcode Camera-->
+    <dimen name="barcode_camera_width">100dp</dimen>
+    <dimen name="padding_barcode_button">100dp</dimen>
+
+</resources>
