@@ -9,9 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-/**
- * Created by Murilo Moro on 26/01/19.
- */
 abstract class BaseViewModel : ViewModel() {
 
     val showLoading = ObservableBoolean()

@@ -1,6 +1,5 @@
 package br.com.filipe.domain
 
-import br.com.filipe.domain.interactor.FavoriteMoviesUseCase
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.domain.repository.MovieRepository
 import com.nhaarman.mockitokotlin2.mock

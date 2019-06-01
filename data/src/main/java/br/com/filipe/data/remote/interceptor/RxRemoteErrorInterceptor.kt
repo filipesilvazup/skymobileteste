@@ -7,9 +7,6 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
-/**
- * Created by Murilo Moro on 11/02/19.
- */
 class RxRemoteErrorInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {

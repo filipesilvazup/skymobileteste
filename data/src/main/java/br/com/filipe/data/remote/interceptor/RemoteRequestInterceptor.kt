@@ -3,9 +3,6 @@ package br.com.filipe.data.remote.interceptor
 import okhttp3.Interceptor
 import okhttp3.Response
 
-/**
- * Created by Murilo Moro on 11/02/19.
- */
 class RemoteRequestInterceptor(private val apiKey: String) : Interceptor {
 
     companion object {

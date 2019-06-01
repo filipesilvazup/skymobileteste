@@ -1,11 +1,7 @@
 <resources>
     <string name="movies_title">CINE SKY</string>
-
-    <string name="favorite_movies_title">Favorite Movies</string>
-
-    <string name="save_to_favorites">Deseja salvar %s nos favoritos?</string>
-    <string name="yes">Sim</string>
-    <string name="no">Não</string>
+    <string name="movies_detail_title">Detail Movie</string>
     <string name="subtitle_home">Uma seleção de filmes imperdíveis:</string>
+    <string name="movie_detail_year">Year: %s</string>
 
 </resources>

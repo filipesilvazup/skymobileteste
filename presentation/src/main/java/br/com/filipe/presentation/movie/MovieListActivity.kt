@@ -7,11 +7,12 @@ import android.widget.Toast
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.presentation.R
 import br.com.filipe.presentation.databinding.ActivityMoviesBinding
-import br.com.filipe.presentation.movie.favorite.FavoriteMovieListActivity
+import br.com.filipe.presentation.movie.detail.MovieDetailActivity
 import br.com.filipe.presentation.ui.base.BaseActivity
 import br.com.filipe.presentation.ui.extensions.observeNotNull
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.io.Serializable
 
 class MovieListActivity : BaseActivity<ActivityMoviesBinding>(), MovieRecyclerAdapter.OnMovieClickListener {
 
@@ -52,17 +53,16 @@ class MovieListActivity : BaseActivity<ActivityMoviesBinding>(), MovieRecyclerAd
 
         viewModel.state.observeNotNull(this) {
             when (it) {
-                MovieListViewModel.State.GoToFavorite -> startActivity(
-                    Intent(
-                        this,
-                        FavoriteMovieListActivity::class.java
-                    )
-                )
+                is MovieListViewModel.State.GoToMovieDetail -> {
+                    val intent = Intent(this, MovieDetailActivity::class.java)
+                    intent.putExtra("movie", it.movie as Serializable)
+                    startActivity(intent)
+                }
             }
         }
     }
 
     override fun onClickFavoriteMovie(movie: Movie) {
-        viewModel.onClickFavoriteMovie(movie)
+        viewModel.onClickMovie(movie)
     }
 }

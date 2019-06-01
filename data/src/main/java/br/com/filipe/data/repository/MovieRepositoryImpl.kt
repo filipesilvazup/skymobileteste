@@ -27,18 +27,4 @@ class MovieRepositoryImpl(
             }
     }
 
-    override fun saveFavoriteMovie(movie: Movie): Completable {
-        return Completable.create {
-            //dao.insertFavorite(FavoriteMovieEntity(Integer.parseInt(movie.id)))
-            it.onComplete()
-        }.subscribeOn(Schedulers.io())
-    }
-
-    override fun deleteFavoriteMovie(id: Long): Completable {
-        return Completable.create {
-            dao.deleteFavorite(FavoriteMovieEntity(id))
-            it.onComplete()
-        }.subscribeOn(Schedulers.io())
-    }
-
 }

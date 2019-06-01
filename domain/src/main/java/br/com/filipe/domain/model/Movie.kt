@@ -1,15 +1,15 @@
 package br.com.filipe.domain.model
 
-/**
- * Created by Murilo Moro on 31/01/19.
- */
+import java.io.Serializable
+
 data class Movie(
     val id: String,
     val title: String,
     val year: String,
-    val posterPath: String,
-    val favorite: Boolean
-) {
+    val imageUrl: String,
+    val description: String,
+    val posterPath: ArrayList<String>
+) : Serializable {
 
-    fun getImageUrl() = posterPath
+    fun getImage() = posterPath[0]
 }

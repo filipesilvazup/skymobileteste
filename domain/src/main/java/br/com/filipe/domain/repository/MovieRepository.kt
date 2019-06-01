@@ -7,8 +7,4 @@ import io.reactivex.Single
 interface MovieRepository {
 
     fun getPopularMovies(): Single<List<Movie>>
-
-    fun saveFavoriteMovie(movie: Movie): Completable
-
-    fun deleteFavoriteMovie(id: Long): Completable
 }

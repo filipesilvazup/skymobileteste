@@ -3,11 +3,9 @@ package br.com.filipe.presentation
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
 import br.com.filipe.domain.exception.DefaultException
-import br.com.filipe.domain.interactor.FavoriteMoviesUseCase
 import br.com.filipe.domain.interactor.GetPopularMoviesUseCase
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.presentation.movie.MovieListViewModel
-import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import io.reactivex.Single
@@ -21,9 +19,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito.`when`
 
-/**
- * Created by Murilo Moro on 04/02/19.
- */
 class MovieListViewModelTest {
 
     @Rule
@@ -32,13 +27,11 @@ class MovieListViewModelTest {
 
     companion object {
         private val MOCK_MOVIES = listOf(
-            Movie(1, "title", 5, "/image.jpg", true)
+            Movie("1", "title", "2010", "www.google.com", "description", arrayListOf())
         )
     }
 
     private val getPopularMoviesUseCaseMock = mock<GetPopularMoviesUseCase>()
-
-    private val favoriteMoviesUseCaseMock = mock<FavoriteMoviesUseCase>()
 
     private val observerPopularMoviesMock: Observer<List<Movie>> = mock()
 
@@ -51,8 +44,7 @@ class MovieListViewModelTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
 
         viewModel = MovieListViewModel(
-            getPopularMoviesUseCaseMock,
-            favoriteMoviesUseCaseMock
+            getPopularMoviesUseCaseMock
         )
     }
 
@@ -60,7 +52,7 @@ class MovieListViewModelTest {
     fun `Test fetchPopularMovies() when success`() {
         //Prepare
         val subjectDelay = PublishSubject.create<List<Movie>>()
-        `when`(getPopularMoviesUseCaseMock.getPopularMovies(1))
+        `when`(getPopularMoviesUseCaseMock.getPopularMovies())
             .thenReturn(Single.just(MOCK_MOVIES).delaySubscription(subjectDelay))
 
         viewModel.popularMovies.observeForever(observerPopularMoviesMock)
@@ -77,7 +69,7 @@ class MovieListViewModelTest {
     fun `Test fetchPopularMovies() when error`() {
         //Prepare
         val mockException = DefaultException("Mock error message")
-        `when`(getPopularMoviesUseCaseMock.getPopularMovies(any()))
+        `when`(getPopularMoviesUseCaseMock.getPopularMovies())
             .thenReturn(Single.error(mockException))
 
         viewModel.error.observeForever(observerErrorMock)

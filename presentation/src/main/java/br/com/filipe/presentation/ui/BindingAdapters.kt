@@ -7,9 +7,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import br.com.filipe.presentation.ui.extensions.loadImageUrl
 
-/**
- * Created by Murilo Moro on 27/01/19.
- */
 object BindingAdapters {
 
     @JvmStatic

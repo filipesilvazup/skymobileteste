@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 
-/**
- * Created by Murilo Moro on 26/01/19.
- */
 abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
 
     protected lateinit var binding: B

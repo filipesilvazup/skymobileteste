@@ -48,6 +48,8 @@ class MovieRecyclerAdapter : RecyclerView.Adapter<MovieRecyclerAdapter.ViewHolde
         fun bind(movie: Movie, listener: OnMovieClickListener?) {
             binding.movie = movie
 
+            binding.clRoot.setOnClickListener { listener?.onClickFavoriteMovie(movie) }
+
             binding.executePendingBindings()
         }
     }
