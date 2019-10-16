@@ -1,9 +1,9 @@
 package br.com.filipe.presentation.ui.extensions
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.databinding.ObservableField
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.databinding.ObservableField
 
 fun <T> LiveData<T>.observeNotNull(
     owner: LifecycleOwner,

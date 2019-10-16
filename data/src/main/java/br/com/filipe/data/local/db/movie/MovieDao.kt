@@ -1,6 +1,6 @@
 package br.com.filipe.data.local.db.movie
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import io.reactivex.Single
 
 @Dao

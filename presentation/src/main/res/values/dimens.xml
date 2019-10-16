@@ -2,6 +2,10 @@
 <resources>
     <dimen name="zero">0dp</dimen>
 
+    <!--Default Paging Progress-->
+    <dimen name="paging_progress_size">40dp</dimen>
+    <dimen name="paging_progress_vertical_margin">5dp</dimen>
+
        <!--Default margin-->
     <dimen name="extra_big_margin">90dp</dimen>
     <dimen name="big_margin">26dp</dimen>

@@ -1,9 +1,9 @@
 package br.com.filipe.presentation
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import br.com.filipe.domain.exception.DefaultException
-import br.com.filipe.domain.interactor.GetPopularMoviesUseCase
+import br.com.filipe.domain.interactor.MovieUseCase
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.presentation.movie.MovieListViewModel
 import com.nhaarman.mockitokotlin2.mock
@@ -31,7 +31,7 @@ class MovieListViewModelTest {
         )
     }
 
-    private val getPopularMoviesUseCaseMock = mock<GetPopularMoviesUseCase>()
+    private val getPopularMoviesUseCaseMock = mock<MovieUseCase>()
 
     private val observerPopularMoviesMock: Observer<List<Movie>> = mock()
 

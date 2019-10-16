@@ -1,6 +1,6 @@
 package br.com.filipe.presentation.ui.extensions
 
-import android.support.v7.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatImageView
 import br.com.filipe.presentation.R
 import com.squareup.picasso.Picasso
 

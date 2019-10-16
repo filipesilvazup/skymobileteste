@@ -1,11 +1,11 @@
-package br.com.filipe.skymobiletest.di
+package br.com.filipe.omdb.di
 
 import br.com.filipe.data.local.db.AppDatabase
 import br.com.filipe.data.remote.MovieService
 import br.com.filipe.data.remote.interceptor.RemoteRequestInterceptor
 import br.com.filipe.data.remote.interceptor.RxRemoteErrorInterceptor
 import org.koin.android.ext.koin.androidApplication
-import org.koin.dsl.module.module
+import org.koin.dsl.module
 
 val dataModule = module {
 

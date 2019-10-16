@@ -1,6 +1,6 @@
 package br.com.filipe.presentation.movie.detail
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.presentation.ui.base.BaseViewModel
 

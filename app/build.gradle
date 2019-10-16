@@ -61,6 +61,7 @@ dependencies {
     implementation dependencies.cardView
 
     implementation dependencies.archLifecyle
+    implementation dependencies.paging
 
     implementation dependencies.room
     implementation dependencies.rxRoom
@@ -94,4 +95,10 @@ dependencies {
     implementation project(':presentation')
     implementation project(':data')
     implementation project(':domain')
+    compile "androidx.core:core-ktx:+"
+    compile "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

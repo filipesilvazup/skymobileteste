@@ -10,11 +10,11 @@
             type="br.com.filipe.presentation.movie.MovieListViewModel" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -31,9 +31,9 @@
                 app:titleTextColor="@color/title_color"
                 tools:title="@string/movies_title" />
 
-        </android.support.design.widget.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,35 +41,37 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle"
+            app:layout_constraintTop_toBottomOf="@+id/etSearch"
             app:onRefreshListener="@{() -> vm.fetchPopularMovies()}"
             app:refreshing="@{vm.showLoading}">
 
-            <android.support.v4.widget.NestedScrollView
+            <androidx.core.widget.NestedScrollView
                 android:id="@+id/scroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true"
                 android:scrollbars="vertical">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimary"
                     android:focusableInTouchMode="true">
 
-                    <TextView
-                        android:id="@+id/tv_subtitle"
+                    <EditText
+                        android:id="@+id/etSearch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
-                        android:text="@string/subtitle_home"
-                        android:textColor="@color/text_color"
+                        android:inputType="text"
+                        android:hint="@string/movie_list_search"
+                        android:textColor="@color/colorAccent"
+                        android:textColorHint="@color/colorAccent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_movies"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -78,14 +80,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_subtitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/etSearch" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </android.support.v4.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

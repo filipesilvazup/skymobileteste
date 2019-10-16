@@ -1,8 +1,8 @@
-package br.com.filipe.skymobiletest
+package br.com.filipe.omdb
 
-import android.arch.lifecycle.Observer
-import android.support.v7.widget.AppCompatImageView
-import android.support.v7.widget.RecyclerView
+import androidx.lifecycle.Observer
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.recyclerview.widget.RecyclerView
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.presentation.movie.MovieListActivity
 import br.com.filipe.presentation.movie.MovieRecyclerAdapter

@@ -1,7 +1,7 @@
 package br.com.filipe.presentation.ui.base
 
-import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableBoolean
+import androidx.lifecycle.ViewModel
+import androidx.databinding.ObservableBoolean
 import br.com.filipe.domain.exception.DefaultException
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -13,7 +13,7 @@ abstract class BaseViewModel : ViewModel() {
 
     val showLoading = ObservableBoolean()
 
-    private val compositeDisposable = CompositeDisposable()
+    protected val compositeDisposable = CompositeDisposable()
 
     protected fun <T> subscribeSingle(
         observable: Single<T>,

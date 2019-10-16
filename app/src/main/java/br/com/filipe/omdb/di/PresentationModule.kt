@@ -1,10 +1,11 @@
-package br.com.filipe.skymobiletest.di
+package br.com.filipe.omdb.di
 
 import br.com.filipe.presentation.movie.MovieRecyclerAdapter
 import br.com.filipe.presentation.movie.MovieListViewModel
+import br.com.filipe.presentation.movie.MoviePageListAdapter
 import br.com.filipe.presentation.movie.detail.MovieDetailViewModel
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
 val presentationModule = module {
 
@@ -13,5 +14,7 @@ val presentationModule = module {
     viewModel { MovieDetailViewModel() }
 
     factory { MovieRecyclerAdapter() }
+
+    factory { MoviePageListAdapter() }
 
 }

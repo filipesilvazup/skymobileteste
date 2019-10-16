@@ -2,21 +2,27 @@ package br.com.filipe.presentation.movie
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.filipe.domain.model.Movie
 import br.com.filipe.presentation.R
 import br.com.filipe.presentation.databinding.ActivityMoviesBinding
 import br.com.filipe.presentation.movie.detail.MovieDetailActivity
 import br.com.filipe.presentation.ui.base.BaseActivity
+import br.com.filipe.presentation.ui.base.BasePagedListAdapter
 import br.com.filipe.presentation.ui.extensions.observeNotNull
+import br.com.filipe.presentation.ui.extensions.rxRealtime
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.Serializable
 
-class MovieListActivity : BaseActivity<ActivityMoviesBinding>(), MovieRecyclerAdapter.OnMovieClickListener {
+class MovieListActivity : BaseActivity<ActivityMoviesBinding>(),
+    MovieRecyclerAdapter.OnMovieClickListener, MoviePageListAdapter.OnMovieClickListener,
+    BasePagedListAdapter.OnRetryPageListener {
 
     val viewModel by viewModel<MovieListViewModel>()
+
+    private val adapter by inject<MoviePageListAdapter>()
 
     private val movieRecyclerAdapter by inject<MovieRecyclerAdapter>()
 
@@ -26,25 +32,31 @@ class MovieListActivity : BaseActivity<ActivityMoviesBinding>(), MovieRecyclerAd
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
 
-        initRecyclerView()
+        initAdapter()
 
         observeData()
+
+        observeSearchField()
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.fetchPopularMovies()
-    }
 
-    private fun initRecyclerView() {
-        movieRecyclerAdapter.listener = this
+    private fun initAdapter() {
+//        movieRecyclerAdapter.listener = this
+//        binding.rvMovies.layoutManager = GridLayoutManager(this, 2)
+//        binding.rvMovies.adapter = movieRecyclerAdapter
+
+        adapter.listener = this
+        adapter.retryListener = this
         binding.rvMovies.layoutManager = GridLayoutManager(this, 2)
-        binding.rvMovies.adapter = movieRecyclerAdapter
+        binding.rvMovies.adapter = adapter
     }
 
     private fun observeData() {
         viewModel.popularMovies.observeNotNull(this) {
-            movieRecyclerAdapter.notifyChanged(it)
+           // movieRecyclerAdapter.notifyChanged(it)
+
+            adapter.submitList(it)
+            adapter.notifyDataSetChanged()
         }
 
         viewModel.error.observeNotNull(this) {
@@ -60,9 +72,22 @@ class MovieListActivity : BaseActivity<ActivityMoviesBinding>(), MovieRecyclerAd
                 }
             }
         }
+
+    }
+
+    private fun observeSearchField() {
+        val disposable = binding.etSearch
+            .rxRealtime {
+                if(it.length > 2)
+                viewModel.searchMovies(it)
+            }
+        compositeDisposable.add(disposable)
     }
 
     override fun onClickFavoriteMovie(movie: Movie) {
         viewModel.onClickMovie(movie)
+    }
+
+    override fun onRetryErrorPage() {
     }
 }

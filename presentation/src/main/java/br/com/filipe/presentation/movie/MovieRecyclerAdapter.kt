@@ -1,7 +1,7 @@
 package br.com.filipe.presentation.movie
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import br.com.filipe.domain.model.Movie
