@@ -9,7 +9,6 @@ import br.com.filipe.presentation.R
 import br.com.filipe.presentation.databinding.ActivityMoviesBinding
 import br.com.filipe.presentation.movie.detail.MovieDetailActivity
 import br.com.filipe.presentation.ui.base.BaseActivity
-import br.com.filipe.presentation.ui.base.BasePagedListAdapter
 import br.com.filipe.presentation.ui.extensions.observeNotNull
 import br.com.filipe.presentation.ui.extensions.rxRealtime
 import org.koin.android.ext.android.inject
@@ -17,12 +16,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.Serializable
 
 class MovieListActivity : BaseActivity<ActivityMoviesBinding>(),
-    MovieRecyclerAdapter.OnMovieClickListener, MoviePageListAdapter.OnMovieClickListener,
-    BasePagedListAdapter.OnRetryPageListener {
+    MovieRecyclerAdapter.OnMovieClickListener{
 
     val viewModel by viewModel<MovieListViewModel>()
-
-    private val adapter by inject<MoviePageListAdapter>()
 
     private val movieRecyclerAdapter by inject<MovieRecyclerAdapter>()
 
@@ -41,22 +37,14 @@ class MovieListActivity : BaseActivity<ActivityMoviesBinding>(),
 
 
     private fun initAdapter() {
-//        movieRecyclerAdapter.listener = this
-//        binding.rvMovies.layoutManager = GridLayoutManager(this, 2)
-//        binding.rvMovies.adapter = movieRecyclerAdapter
-
-        adapter.listener = this
-        adapter.retryListener = this
+        movieRecyclerAdapter.listener = this
         binding.rvMovies.layoutManager = GridLayoutManager(this, 2)
-        binding.rvMovies.adapter = adapter
+        binding.rvMovies.adapter = movieRecyclerAdapter
     }
 
     private fun observeData() {
         viewModel.popularMovies.observeNotNull(this) {
-           // movieRecyclerAdapter.notifyChanged(it)
-
-            adapter.submitList(it)
-            adapter.notifyDataSetChanged()
+            movieRecyclerAdapter.notifyChanged(it)
         }
 
         viewModel.error.observeNotNull(this) {
@@ -67,7 +55,7 @@ class MovieListActivity : BaseActivity<ActivityMoviesBinding>(),
             when (it) {
                 is MovieListViewModel.State.GoToMovieDetail -> {
                     val intent = Intent(this, MovieDetailActivity::class.java)
-                    intent.putExtra("movie", it.movie as Serializable)
+                    intent.putExtra("omdbId", it.movie.id)
                     startActivity(intent)
                 }
             }
@@ -86,8 +74,5 @@ class MovieListActivity : BaseActivity<ActivityMoviesBinding>(),
 
     override fun onClickFavoriteMovie(movie: Movie) {
         viewModel.onClickMovie(movie)
-    }
-
-    override fun onRetryErrorPage() {
     }
 }

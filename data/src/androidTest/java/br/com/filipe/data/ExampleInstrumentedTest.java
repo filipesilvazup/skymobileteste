@@ -1,8 +1,9 @@
 package br.com.filipe.data;
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import androidx.test.InstrumentationRegistry;
+import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("br.com.murilomoro.data.test", appContext.getPackageName());
+        assertEquals("br.com.filipe.data.test", appContext.getPackageName());
     }
 }

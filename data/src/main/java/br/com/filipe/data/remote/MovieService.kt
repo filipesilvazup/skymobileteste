@@ -1,7 +1,7 @@
 package br.com.filipe.data.remote
 
+import br.com.filipe.data.remote.dto.MovieDetailDto
 import br.com.filipe.data.remote.dto.MovieDto
-import br.com.filipe.data.remote.dto.PagingDto
 import br.com.filipe.data.remote.interceptor.RxRemoteErrorInterceptor
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -18,11 +18,11 @@ interface MovieService {
     @GET("?s=batman&apikey=45023bb7")
     fun getPopularMovies(): Single<MovieDto.Response>
 
-    @GET("?s=batman&apikey=45023bb7")
-    fun searchPagedMovie(@Query("page") page: Int): Single<PagingDto<MovieDto.Response>>
+    @GET("?apikey=45023bb7")
+    fun searchMovie(@Query("s") search: String): Single<MovieDto.Response>
 
     @GET("?apikey=45023bb7")
-    fun searchMovie(@Query("s") search: String, @Query("page") page: Int): Single<PagingDto<MovieDto.Response>>
+    fun getMovieDetail(@Query("i") omdbId: String): Single<MovieDetailDto.MovieDetailResponse>
 
     companion object {
         fun createMovieService(

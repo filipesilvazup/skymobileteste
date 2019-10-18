@@ -2,7 +2,6 @@ package br.com.filipe.omdb.di
 
 import br.com.filipe.presentation.movie.MovieRecyclerAdapter
 import br.com.filipe.presentation.movie.MovieListViewModel
-import br.com.filipe.presentation.movie.MoviePageListAdapter
 import br.com.filipe.presentation.movie.detail.MovieDetailViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -11,10 +10,8 @@ val presentationModule = module {
 
     viewModel { MovieListViewModel(get()) }
 
-    viewModel { MovieDetailViewModel() }
+    viewModel { MovieDetailViewModel(get()) }
 
     factory { MovieRecyclerAdapter() }
-
-    factory { MoviePageListAdapter() }
 
 }

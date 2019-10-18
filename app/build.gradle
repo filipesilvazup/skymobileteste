@@ -61,7 +61,6 @@ dependencies {
     implementation dependencies.cardView
 
     implementation dependencies.archLifecyle
-    implementation dependencies.paging
 
     implementation dependencies.room
     implementation dependencies.rxRoom
@@ -71,6 +70,8 @@ dependencies {
     implementation dependencies.koinViewModel
 
     implementation dependencies.picasso
+    implementation dependencies.fiveStars
+    implementation dependencies.glide
 
     implementation dependencies.rxKotlin
     implementation dependencies.rxAndroid

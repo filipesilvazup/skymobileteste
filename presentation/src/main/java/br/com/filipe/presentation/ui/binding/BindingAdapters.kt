@@ -1,4 +1,4 @@
-package br.com.filipe.presentation.ui
+package br.com.filipe.presentation.ui.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.appcompat.widget.AppCompatImageView

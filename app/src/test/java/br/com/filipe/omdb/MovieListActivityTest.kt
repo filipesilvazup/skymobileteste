@@ -23,9 +23,7 @@ import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.android.controller.ActivityController
 
-/**
- * Created by Murilo Moro on 04/02/19.
- */
+
 @RunWith(RobolectricTestRunner::class)
 class MovieListActivityTest : KoinTest {
 
